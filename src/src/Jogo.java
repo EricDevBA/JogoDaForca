@@ -112,28 +112,28 @@ public class Jogo {
 			}
 			else{
 				switch (auxLetra){
-				case '�' : if (letra == 'C')
+				case '1' : if (letra == 'C') 
 							temp = atualizaPalavra(vetPalavra, i);
 						   break;
-				case '�':
-				case '�':
-				case '�': if (letra == 'A')
+				case '2':
+				case '3':
+				case '4': if (letra == 'A')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '�':
-				case '�': if (letra == 'E')
+				case '5':
+				case '6': if (letra == 'E')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '�': if (letra == 'I')
+				case '7': if (letra == 'I')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '�':
-				case '�':
-				case '�': if (letra == 'O')
+				case '8':
+				case '9':
+				case '0': if (letra == 'O')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '�':
-				case '�': if (letra == 'U')
+				case ';':
+				case '.': if (letra == 'U')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
 				}
