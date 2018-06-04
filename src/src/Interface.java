@@ -3,7 +3,7 @@ package src;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
+import java.awt.Font;                       
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,23 +37,23 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 	private ImageIcon enforcado; //imagem do enforcado
 	private ImageIcon jogoDaForca; //imagem "Jogo da Forca"
 	private ImageIcon imgSegredo; //imagem do segredo
-	private JPanel painelInicio; //painel que ser� mostrado na tela de abertura do jogo
-	private JPanel painelLetras; //painel onde ficar�o os bot�es com as letras;
+	private JPanel painelInicio; //painel que sera mostrado na tela de abertura do jogo
+	private JPanel painelLetras; //painel onde ficarao os botões com as letras;
 	private JPanel painelFigura; //painel onde vai ficar a figura do segredo
 	private JPanel painelSegredo; //painel onde fica o vetor do segredo
 	private JPanel painelCentral; //painel do vetor do segredo completo (com label)
-	private JLabel titulo; //label que cont�m a imagem do titulo
-	private JLabel msg1, msg2,msg3, msg4, msg5; // labels que cont�m as mensagens do painel inicial
-	private JLabel labelEnforcado; //label que cont�m a figura do enforcado
-	private JLabel labelSegredo; //label que cont�m a palavra "Descubra do segredo!"
-	private JLabel atnivel; //label uqe vai mostar qual nivel est� sendo jogado
-	private JLabel labelfigura; //label que cont�m a figura do segredo
+	private JLabel titulo; //label que contém a imagem do titulo
+	private JLabel msg1, msg2,msg3, msg4, msg5; // labels que contém as mensagens do painel inicial
+	private JLabel labelEnforcado; //label que contém a figura do enforcado
+	private JLabel labelSegredo; //label que contém a palavra "Descubra do segredo!"
+	private JLabel atnivel; //label uqe vai mostar qual nivel esta sendo jogado
+	private JLabel labelfigura; //label que contém a figura do segredo
 	private Jogo jogo; //referente ao jogo em si
-	private int nivelAtual; //�ltimo n�vel escolhido pelo jogador
+	private int nivelAtual; //Último nível escolhido pelo jogador
 			
 	/**
-	 * M�todo construtor para inicializar e montar os pain�is
-	 * Monta a tela de entrada (at� que o usus�rio realize uma a��o)
+	 * Método construtor para inicializar e montar os painéis
+	 * Monta a tela de entrada (ate que o usuario realize uma ação)
 	 */
 	public Interface () {
 		super ("Jogo da Forca");
@@ -68,10 +68,10 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		fazPainelFigura ("");
 		this.painelCentral.setVisible(false);
 		this.painelSegredo.setVisible(false);
-		this.nivelAtual = 0; //inicializado para compara��o caso o menu das op��es seja ativado
+		this.nivelAtual = 0; //inicializado para comparação caso o menu das opções seja ativado
 	}
 	
-	//m�todo que configura o JFrame
+	//Método responsável pela configuração do JFrame
 	private void configuraJFrame () {
 		setSize (1000,700);
 		setResizable (false);
@@ -79,7 +79,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		getContentPane().setLayout(null);
 	}
 	
-	//m�todo que cria o menu
+	//Método que cria o menu
 	private void criaMenu () {
 		//itens do menu ARQUIVO
 		this.sobre = new JMenuItem ("Sobre");
@@ -90,23 +90,23 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		this.sair.addActionListener(this);
 		this.sair.setMnemonic('r');
 		
-		//itens do menu OP��ES
-		this.solucao = new JMenuItem ("Solu��o");
+		//itens do menu OPÇÕES
+		this.solucao = new JMenuItem ("Solução");
 		this.solucao.addActionListener(this);
 		this.solucao.setMnemonic('S');
 		
-		this.proximo = new JMenuItem ("Pr�ximo");
+		this.proximo = new JMenuItem ("Próximo");
 		this.proximo.addActionListener(this);
 		this.proximo.setMnemonic('P');
 		
 		//itens do Menu N�VEis
 		for (int i=0; i <= 3; i++) {
-			this.niveis[i] = new JRadioButtonMenuItem ("N�vel" + (i+1));
+			this.niveis[i] = new JRadioButtonMenuItem ("Nível" + (i+1));
 			this.niveis[i].addItemListener(this);
 			this.niveis[i].setFocusable(false);
 		}
 		
-		//grupo dos botoes dos menu n�veis
+		//grupo dos botoes dos menu níveis
 		this.radioGroup = new ButtonGroup();
 		this.radioGroup.add(this.niveis[0]);
 		this.radioGroup.add(this.niveis[1]);
@@ -120,14 +120,14 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		this.arquivo.add(this.sobre);
 		this.arquivo.add(this.sair);
 		
-		this.nivel = new JMenu ("N�veis");
+		this.nivel = new JMenu ("Níveis");
 		this.nivel.setMnemonic('N');
 		this.nivel.addActionListener(this);
 		for (int i=0; i <= 3; i++) {
 			this.nivel.add(this.niveis[i]);
 		}
 			
-		this.opcoes = new JMenu ("Op��es");
+		this.opcoes = new JMenu ("Opções");
 		this.opcoes.setMnemonic('O');
 		this.opcoes.addActionListener(this);
 		this.opcoes.add(this.solucao);
@@ -141,7 +141,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		this.barraMenu.add(this.opcoes);
 	}
 	
-	//m�todo que faz o t�tulo
+	//Método que faz o título
 	private void fazTitulo () {
 		this.jogoDaForca = new ImageIcon ("img\\jogodaforca.gif");
 		this.titulo = new JLabel (jogoDaForca);
@@ -150,7 +150,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		getContentPane().add(this.titulo);
 	}
 	
-	//m�todo que faz o painel do bot�es
+	//m�todo que faz o painel do botões
 	private void fazPainelBotoes () {
 		this.painelLetras = new JPanel ();
 		this.painelLetras.setSize (1000,200);
@@ -226,29 +226,29 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		}			
 	}
 	
-	//m�todo que habilita os painel dos bot�es para que um nvo nivel se inicie
+	//método que habilita os painel dos bot�es para que um nvo nivel se inicie
 	private void habilitaBotoes () {
 		for (int i = 0; i < 26; i++) {
 			this.vetbotao[i].setEnabled(true);
 		}
 	}
 	
-	//m�todo que desabilita os bot�es caso a solu��o seja pedida pelo usu�rio
+	//método que desabilita os botões caso a solução seja pedida pelo usuário
 	private void desabilitaBotoes () {
 		for (int i = 0; i < 26; i++) {
 			this.vetbotao[i].setEnabled(false);
 		}
 	}
 	
-	//m�todo que faz o Painel Inicial
+	//método que faz o Painel Inicial
 	private void fazPainelInicial () {
-		this.msg1 = new JLabel ("Ol�!!!",JLabel.CENTER);
+		this.msg1 = new JLabel ("Olá!!!",JLabel.CENTER);
 		this.msg1.setFont (new Font ("Comic Sans", Font.BOLD,40));
 		this.msg2 = new JLabel ("Bem-vindo(a)!",JLabel.CENTER);
 		this.msg2.setFont (new Font ("Comic Sans", Font.BOLD,40));
 		this.msg3 = new JLabel ("Escolha no",JLabel.CENTER);
 		this.msg3.setFont (new Font ("Comic Sans", Font.BOLD,40));
-		this.msg4 = new JLabel ("menu um n�vel",JLabel.CENTER);
+		this.msg4 = new JLabel ("menu um nível",JLabel.CENTER);
 		this.msg4.setFont (new Font ("Comic Sans", Font.BOLD,40));
 		this.msg5 = new JLabel ("para jogar!",JLabel.CENTER);
 		this.msg5.setFont (new Font ("Comic Sans", Font.BOLD,40));
@@ -265,7 +265,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		getContentPane().add(this.painelInicio);
 	}
 	
-	//m�todo que faz o painel da figura do enforcado
+	//método que faz o painel da figura do enforcado
 	private void fazPainelEnforcado () {
 		this.enforcado = new ImageIcon ("img\\hmg5.gif");
 		this.labelEnforcado = new JLabel (this.enforcado);
@@ -274,14 +274,14 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		getContentPane().add(this.labelEnforcado);
 	}
 	
-	//m�todo que atualiza a figura do enforcado
+	//método que atualiza a figura do enforcado
 	//int num = numero de erros para mostrar a imagem correta
 	private void atualizaEnforcado (int num) {
 		ImageIcon image  = new ImageIcon ("img\\hmg"+num+".gif");
 		this.labelEnforcado.setIcon(image);
 	}
 	
-	//m�todo que faz o painel das caixinhas das letras do segredo
+	//método que faz o painel das caixinhas das letras do segredo
 	private void fazPainelSegredo () {
 		int i;
 		this.segredo = new JTextField[20];
@@ -300,7 +300,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		getContentPane().add(this.painelSegredo);
 	}
 	
-	//m�todo que faz o painel Central completo
+	//Método responsável pelo Painel Completo
 	private void fazPainelCentral () {
 		this.painelCentral = new JPanel ();
 		this.painelCentral.setSize (480,50);
@@ -313,13 +313,13 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		fazPainelSegredo ();
 	}
 	
-	//m�todo que faz o painel onde vai ficar a imagem do segredo
+	//Método que faz o painel onde vai ficar a imagem do segredo
 	private void fazPainelFigura (String img) {
 		this.painelFigura = new JPanel ();
 		this.painelFigura.setSize (230,300);
 		this.painelFigura.setLocation(750,150);
 		this.painelFigura.setLayout (new BorderLayout ());
-		this.atnivel = new JLabel ("N�vel: "+this.nivelAtual,JLabel.CENTER);
+		this.atnivel = new JLabel ("Nível: "+this.nivelAtual,JLabel.CENTER);
 		this.atnivel.setFont (new Font ("Comic Sans",Font.BOLD,30));
 		this.imgSegredo = new ImageIcon ("img\\"+img);
 		this.labelfigura = new JLabel (this.imgSegredo,JLabel.CENTER);
@@ -328,14 +328,14 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		getContentPane().add(this.painelFigura);
 	}
 	
-	//m�todo que atualiza o painel da Figura
+	//método que atualiza o painel da Figura
 	private void atualizaPainelFigura (String img) {
 		ImageIcon image  = new ImageIcon ("img\\"+img);
 		this.labelfigura.setIcon(image);
-		this.atnivel.setText("N�vel "+this.nivelAtual);
+		this.atnivel.setText("Nível "+this.nivelAtual);
 	}
 	
-	//m�todo que faz um novo nivel
+	//método que faz um novo nivel
 	private void novoNivel (String seg, String img) {
 		this.painelInicio.setVisible(false);
 		atualizaEnforcado (0);
@@ -349,7 +349,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 	}
 	
 	
-	//m�todo que atualiza o painel dos segredo para que as letras possam aparecer assim que o usu�rio digitar
+	//método que atualiza o painel dos segredo para que as letras possam aparecer assim que o usuário digitar
 	public void atualizaPainelSegredo (String palavra){
 		int tamanho = palavra.length();
 		for (int i=0; i< 20; i++){
@@ -366,33 +366,33 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 	
-	//m�todo que trata os eventos 
+	//método que trata os eventos 
 	public void actionPerformed(ActionEvent e) {
 		eventoMenu (e);
 		eventoBotaoLetras (e);
 	}
 	
-	//m�todo que trata dos eventos do menu
+	//método que trata dos eventos do menu
 	public void eventoMenu (ActionEvent e) {
 		if (e.getSource() == this.sobre){
 			ImageIcon icon = new ImageIcon ("img//icone.gif");
-			JOptionPane.showMessageDialog (null,"JOGO DA FORCA\nDesenvolvido por Loiane Groner\nVers�o 1.5\nFevereiro/2006","Sobre",JOptionPane.INFORMATION_MESSAGE,icon);
+			JOptionPane.showMessageDialog (null,"JOGO DA FORCA\nDesenvolvido por Eric Santos\nVersão 1.5\nJunho/2018","Sobre",JOptionPane.INFORMATION_MESSAGE,icon);
 		}
 		if (e.getSource() == this.sair){
 			System.exit(0);
 		}
 		if (e.getSource() == this.solucao){
 			if (this.nivelAtual == 0) {
-				JOptionPane.showMessageDialog (null,"Escolha um n�vel para jogar!","",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog (null,"Escolha um nível para jogar!","",JOptionPane.WARNING_MESSAGE);
 			}
 			else {
-				JOptionPane.showMessageDialog (null,"A SOLU��O � "+this.jogo.getSegredo(),"Resposta",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog (null,"A SOLUÇÃO É "+this.jogo.getSegredo(),"Resposta",JOptionPane.INFORMATION_MESSAGE);
 				desabilitaBotoes ();
 			}
 		}
 		if (e.getSource() == this.proximo){
 			if (this.nivelAtual == 0) {
-				JOptionPane.showMessageDialog (null,"Escolha um n�vel para jogar!","",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog (null,"Escolha um nível para jogar!","",JOptionPane.WARNING_MESSAGE);
 			}
 			else {
 				this.jogo.preparaJogo();
@@ -401,7 +401,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 	
-	//m�todo que trata os eventos dos bot�es das letras
+	//Método que trata os eventos dos botões das letras
 	public void eventoBotaoLetras (ActionEvent e) {
 		int quantErro;
 		char letra;
@@ -424,7 +424,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 				}
 				if (this.jogo.jogoAcabou()) {
 					if (quantErro < 5){
-						JOptionPane.showMessageDialog (null,"PARAB�NS! \nVoc� adivinhou o segredo!","",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog (null,"PARABÉNS! \nVocê adivinhou o segredo!","",JOptionPane.INFORMATION_MESSAGE);
 						desabilitaBotoes ();
 					}
 					else {
@@ -437,7 +437,7 @@ public class Interface extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 
-	//m�todo que trata dos eventos dos RadioButtons
+	//método que trata dos eventos dos RadioButtons
 	public void itemStateChanged(ItemEvent e) {
 		for (int i = 0; i < 4; i++) {
 			if (e.getSource() == this.niveis[i]){

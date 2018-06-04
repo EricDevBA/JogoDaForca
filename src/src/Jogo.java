@@ -6,12 +6,12 @@ import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
 
 public class Jogo {
-	private int acertos; //referente � quantidade de acertos
-	private int erros; //referente � quantidade de erros
+	private int acertos; //referente a quantidade de acertos
+	private int erros; //referente a quantidade de erros
 	private String segredo; //referente ao segredo a ser descoberto
 	private String imagem; //imagem do segredo
-	private String palavra; //referente � palavra que est� seno descoberta (segredo auxiliar)
-	private VetorPalavraImagem vetor; //referente ao vetor que cont�m as palavras do nivel atual escolhido
+	private String palavra; //referente a palavra que está seno descoberta (segredo auxiliar)
+	private VetorPalavraImagem vetor; //referente ao vetor que contém as palavras do nivel atual escolhido
 	
 	//m�todo construtor
 	public Jogo (int level)   {
@@ -40,37 +40,37 @@ public class Jogo {
 		}
 	}
 	
-	//m�todo que retorna o vetor com as palavras
+	//método que retorna o vetor com as palavras
 	public VetorPalavraImagem getVetor () {
 		return this.vetor;
 	}
 	
-	//m�todo que retorna a qauntidade de erros
+	//método que retorna a qauntidade de erros
 	public int getErros () {
 		return this.erros;
 	}
 	
-	//m�todo que retorna a quantidade de acertos
+	//método que retorna a quantidade de acertos
 	public int getAcertos () {
 		return this.acertos;
 	}
 	
-	//m�todo que retorna o segredo (palavra que foi escolhida)
+	//método que retorna o segredo (palavra que foi escolhida)
 	public String getSegredo () {
 		return this.segredo;
 	}
 	
-	//m�todo que retorna a imagem do segredo
+	//método que retorna a imagem do segredo
 	public String getImagem () {
 		return this.imagem;
 	}
 	
-	//m�todo que retorna a palavra  - segredo auxiliar
+	//método que retorna a palavra  - segredo auxiliar
 	public String getPalavra () {
 		return this.palavra;
 	}
 	
-	//m�todo que verifica se o jogo acabou
+	//método que verifica se o jogo acabou
 	public boolean jogoAcabou () {
 		if ((this.erros == 5) || (this.acertos == this.segredo.length())) {
 			return true;
@@ -80,7 +80,7 @@ public class Jogo {
 		}
 	}
 	
-	//m�todo que prepara o jogo e inicializa as vari�veis fazendo as verifica��es necess�rias
+	//método que prepara o jogo e inicializa as variáveis fazendo as verificações necessárias
 	public void preparaJogo () {
 		PalavraImagem forca;
 		forca = this.vetor.sorteio();
@@ -99,7 +99,7 @@ public class Jogo {
 		}
 	}	
 	
-	//m�todo que verifica se tem a letra que o usu�rio digitou considerando os casos especiais (�,�,�,�, etc)
+	//método que verifica se tem a letra que o usuário digitou considerando os casos especiais 
 	private boolean temLetra(char letra){
 		char[] vetPalavra = new char[palavra.length()];
 		boolean temp = false;
@@ -112,28 +112,28 @@ public class Jogo {
 			}
 			else{
 				switch (auxLetra){
-				case '1' : if (letra == 'C') 
+				case 'Ç' : if (letra == 'C') 
 							temp = atualizaPalavra(vetPalavra, i);
 						   break;
-				case '2':
-				case '3':
-				case '4': if (letra == 'A')
+				case 'Á':
+				case 'Â':
+				case 'Ã': if (letra == 'A')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '5':
-				case '6': if (letra == 'E')
+				case 'É':
+				case 'Ê': if (letra == 'E')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '7': if (letra == 'I')
+				case 'Í': if (letra == 'I')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case '8':
-				case '9':
-				case '0': if (letra == 'O')
+				case 'Ó':
+				case 'Õ':
+				case 'Ô': if (letra == 'O')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
-				case ';':
-				case '.': if (letra == 'U')
+				case 'Ú':
+				case 'Ü': if (letra == 'U')
 							temp = atualizaPalavra(vetPalavra, i);
 						  break;
 				}
@@ -143,14 +143,14 @@ public class Jogo {
 		return temp;
 	}
 	
-	//m�todo que atualiza a palavra (segredo 2) para que aparec�a para o usu�rio o estado atual da sua descoberta
+	//método que atualiza a palavra (segredo 2) para que apareça para o usuário o estado atual da sua descoberta
 	private boolean atualizaPalavra (char[] vetPalavra, int ind){
 		vetPalavra[ind] = this.segredo.charAt(ind);
 		this.acertos++;
 		return true;
 	}
 	
-	//m�todo que verifica se tem uma determinada letra na palavra a ser descoberta
+	//método que verifica se tem uma determinada letra na palavra a ser descoberta
 	public void acertou (char letra) {
 		if (!temLetra(letra)) {
 			this.erros++;

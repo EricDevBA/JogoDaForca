@@ -9,8 +9,8 @@ public class LeArquivo {
 	
 	private Scanner input;
 	
-	//m�todo para abrir o arquivo
-	//par�metro - nome do arquivo a ser lido
+	//método para abrir o arquivo
+	//parâmetro - nome do arquivo a ser lido
 	public void openFile (String arquivo) throws FileNotFoundException {
 		try {
 			input = new Scanner (new File ("arquivos\\" + arquivo));
@@ -20,7 +20,7 @@ public class LeArquivo {
 		}
 	}
 	
-	//m�todo que l� o arquivo e armazena as inform��es no registro
+	//método que lê o arquivo e armazena as informações no registro
 	public VetorPalavraImagem readFile () throws Exception {
 		PalavraImagem reg; 
 		VetorPalavraImagem vetor;
@@ -36,7 +36,7 @@ public class LeArquivo {
 					reg = new PalavraImagem(linha);
 				}
 				catch (Exception erro){
-					throw new Exception ("LINHA DO ARQUIVO N�O CONT�M TODOS OS COMPONENTES");
+					throw new Exception ("LINHA DO ARQUIVO NÃO CONTÉM TODOS OS COMPONENTES");
 				}
 				vetor.insereVetor(reg);
 			}
@@ -55,7 +55,7 @@ public class LeArquivo {
 		
 	}
 	
-	//m�todo para fechar o arquivo
+	//método para fechar o arquivo
 	public void closeFile () {
 		if (input != null) {
 			input.close ();
